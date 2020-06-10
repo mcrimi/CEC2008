@@ -38,7 +38,7 @@ Following the proceedings of : M. Zambrano-Bigiarini, M. Clerc and R. Rojas, "St
 We have a swarm of 40 particles with random initialisation of particle positions and velocities
 
 The acceleration coefficients for the best positon of the particle (c1)  and best position of the swarm (c2) are set to to 0.5 + ln(2); 
-in an unconstrained particle velocity and a constant inertia weight equal to ω = 1/(2  ln(2)).
+in an unconstrained particle velocity and a constant inertia weight equal to ω = 1/(2 * ln(2)).
 
 
 ## Stopping criterion
