@@ -6,24 +6,40 @@ See CEC2008_TechnicalReport.pdf
 
 ## Requirements
 Python 3.7
-tkinter
-scypy
-pigmo
-opfunu (pip install git+https://github.com/thieunguyen5991/opfunu recommended as there is a bug fix I've applied see [this commit](https://github.com/thieunguyen5991/opfunu/commit/346f86686c38ce14238615165bc7547ced6390eb#diff-0dc1a3a4cb023fa8274168c2035ed91a)
+Libraries
+  scypy
+  Pigmo
+  Pandas
+  opfunu (Install from github is recommendened - pip install git+https://github.com/thieunguyen5991/opfunu - as there is a bug fix I've applied see [this commit](https://github.com/thieunguyen5991/opfunu/commit/346f86686c38ce14238615165bc7547ced6390eb#diff-0dc1a3a4cb023fa8274168c2035ed91a)
 
 ## Run the script
 1) Install required libraries
-2) Run *Baseline.py*
-3) Provide the inputs: problem to solve (1 to 6) and number of dimensions (1 to 500) 
+2) Execute Baseline.py in a Python 3.7 interpreter
+3) Provide the inputs: 
+    Problem to solve (1 to 6)
+    Number of dimensions (1 to 500) 
+    Maximum iterations
+
+For any problem with dimension = 2, you'll get a contour plot with the last generation swarm in blue and the best particle in red
 
 ## Algorithm
+PSO is an evolutionary algorithm where each individual within the population, known as particle in PSO terminology, adjusts its flying trajectory in the multi-dimensional search space according to its own previous flying experience together with those of the neighbouring particles in the swarm.
 
 ## Hyper-parameters
 
+For the parametrization of the algorithm I've followed the recommendations of the following paper:
+
+I've used the *Canonical PSO with inertia weight* variant mainly because that's the one I've seen in class, but it would be very intersting to explore the fully informed methodology.
+
+In terms of topology of the swarm I've chosen and adaptive random topology, where each particle randomly informs K particles and itself  with K usually set to 3. In this topology the connections between particles randomly change when the global optimum shows no improvement.
+
+Following the proceedings of : M. Zambrano-Bigiarini, M. Clerc and R. Rojas, "Standard Particle Swarm Optimisation 2011 at CEC-2013: A baseline for future PSO improvements," 2013 IEEE Congress on Evolutionary Computation, Cancun, 2013, pp. 2337-2344, doi: 10.1109/CEC.2013.6557848.
+
+We have a swarm of 40 particles with random initialisation of particle positions and velocities
+
+The acceleration coefficients for the best positon of the particle (c1)  and best position of the swarm (c2) are set to to 0.5 + ln(2); 
+in an unconstrained particle velocity and a constant inertia weight equal to ω = 1/(2  ln(2)).
+
 
 ## Stopping criterion
-Generations= 100
-
-## Ideas for extension
-
-
+Number of generation
