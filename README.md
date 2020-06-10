@@ -20,7 +20,7 @@ See CEC2008_TechnicalReport.pdf
     Number of dimensions (1 to 500) 
     Maximum iterations
 
-For any problem with dimension = 2, you'll get a contour plot with the last generation swarm in blue and the best particle in red
+For any problem with dimension = 2, you'll get a contour plot with the last generation swarm in blue and the best particle in red. For this to work the F_contour_soultion.txt files should be in the same folder as baseline.py,
 
 ## Algorithm
 PSO is an evolutionary algorithm where each individual within the population, known as particle in PSO terminology, adjusts its flying trajectory in the multi-dimensional search space according to its own previous flying experience together with those of the neighbouring particles in the swarm.
@@ -33,9 +33,7 @@ I've used the *Canonical PSO with inertia weight* variant mainly because that's 
 
 In terms of topology of the swarm I've chosen and adaptive random topology, where each particle randomly informs K particles and itself  with K usually set to 3. In this topology the connections between particles randomly change when the global optimum shows no improvement.
 
-Following the proceedings of : M. Zambrano-Bigiarini, M. Clerc and R. Rojas, "Standard Particle Swarm Optimisation 2011 at CEC-2013: A baseline for future PSO improvements," 2013 IEEE Congress on Evolutionary Computation, Cancun, 2013, pp. 2337-2344, doi: 10.1109/CEC.2013.6557848.
-
-We have a swarm of 40 particles with random initialisation of particle positions and velocities
+Following the proceedings of : M. Zambrano-Bigiarini, M. Clerc and R. Rojas, "Standard Particle Swarm Optimisation 2011 at CEC-2013: A baseline for future PSO improvements," doi: 10.1109/CEC.2013.6557848 I've defined a swarm of 40 particles with random initialisation of particle positions and velocities
 
 The acceleration coefficients for the best positon of the particle (c1)  and best position of the swarm (c2) are set to to 0.5 + ln(2); 
 in an unconstrained particle velocity and a constant inertia weight equal to ω = 1/(2 * ln(2)).
