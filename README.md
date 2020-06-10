@@ -5,16 +5,16 @@ Optimization in Python for CEC’2008 Benchmark Functions  (Competition on Large
 See CEC2008_TechnicalReport.pdf
 
 ## Requirements
-Python 3.7
-Libraries
-  scypy
-  Pigmo
-  Pandas
-  opfunu (Install from github is recommendened - pip install git+https://github.com/thieunguyen5991/opfunu - as there is a bug fix I've applied see [this commit](https://github.com/thieunguyen5991/opfunu/commit/346f86686c38ce14238615165bc7547ced6390eb#diff-0dc1a3a4cb023fa8274168c2035ed91a)
+1. Python 3.7
+2. Libraries
+   - scypy
+   - pigmo
+   - pandas
+   - opfunu: Installation from github is recommendened (pip install git+https://github.com/thieunguyen5991/opfunu) as there is a bug fix I've applied see [this commit](https://github.com/thieunguyen5991/opfunu/commit/346f86686c38ce14238615165bc7547ced6390eb#diff-0dc1a3a4cb023fa8274168c2035ed91a)
 
 ## Run the script
 1) Install required libraries
-2) Execute Baseline.py in a Python 3.7 interpreter
+2) Execute **Baseline.py** in a Python 3.7 interpreter
 3) Provide the inputs: 
     Problem to solve (1 to 6)
     Number of dimensions (1 to 500) 
