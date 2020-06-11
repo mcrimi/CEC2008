@@ -41,4 +41,4 @@ in an unconstrained particle velocity and a constant inertia weight equal to ω 
 
 
 ## Stopping criterion
-Number of generation
+Number of generations
