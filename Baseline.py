@@ -15,7 +15,7 @@ import tkinter as tk
 from tkinter import simpledialog
 import time
 
-#Wrapping opfunu funcions into a class for PyGMO 
+#Wrapping opfunu funcions into a class for PyGMO to work
 class functions:
     def __init__(self, f, dim):
         self.dim = dim
@@ -53,12 +53,12 @@ class functions:
     def get_bounds(self):
          return self.bounds
 
-#driver code
+#Driver code
 def main(): 
     #Hyperparameters
     #---------------
-    swarm= 20
-    ind_best_weight= 1.2 #1.19314
+
+    ind_best_weight= 1.19314
     neigh_best_weight= 1.19314
     intertia_weigth= 0.72134
 
@@ -66,8 +66,10 @@ def main():
     #2 - lbest
     #3 - Von Neumann
     #4 - Adaptive random
-    neighb_topology= 1 
-    neighb_param =4  # 3 # K informants
+    neighb_topology= 4
+    
+    #Number of K informants for the Adaptative Random neighborhood
+    neighb_param = 3
 
     #1 - Canonical (with inertia weight)
     #2 - Same social and cognitive rand.
@@ -75,23 +77,33 @@ def main():
     #4 - Only one rand.
     #5 - Canonical (with constriction fact.)
     #6 - Fully Informed (FIPS)
-    pso_variant= 6
-    swarm_size= 25
-    generations=100
+    pso_variant= 1
+    
+    
+    #Number of particles in the swarm
+    swarm_size= 40
 
     #Select problem and dimensions
-    application_window = tk.Tk()
-    f_problem = simpledialog.askinteger("Input", "What problem (F) do you want to optimize? (1-6)", parent=application_window,  minvalue=1, maxvalue=6)
-    dimensions = simpledialog.askinteger("Input", "For how many dimensions? (1-500)", parent=application_window, minvalue=1, maxvalue=500)
+    #application_window = tk.Tk()
+    f_problem = int(input("What problem (F) do you want to optimize? (1 to 6): "))
+    dimensions =int(input("For how many dimensions? (1 to 500): "))
+    generations = int(input("Maximum number of iterations? (1 to 500): "))
 
-    swarm_size= 25
+    sel_func= functions(f=f_problem,dim=dimensions)
+    
+    print('\n----------------------------------------------')
+    print('\nFunction: ',sel_func.f.f_name)
+    print('\nDimensions: ',dimensions)
+    print('\nGenerations: ',generations)
+
     #Solver
     #------
     print('\n----------------------------------------------')
-    print('\nOptimization:')
+    print('\nOptimization Running...')
     start = time.time()
 
-    prob = pg.problem(functions(f=f_problem,dim=dimensions))
+    prob = pg.problem(sel_func)
+    print('\n{}', prob)
     pop = pg.population(prob, size=swarm_size)
     algo = pg.algorithm(pg.pso(gen=generations, omega=intertia_weigth, eta1=neigh_best_weight, eta2=ind_best_weight, max_vel=1, variant=pso_variant, neighb_type=neighb_topology, neighb_param= neighb_param, memory=False, seed=123))
     algo.set_verbosity(1)
@@ -115,21 +127,21 @@ def main():
     ax = fig.add_subplot(111)
     ax.plot(x, y, color='lightblue', linewidth=1)
     ax.set_xlim(1, generations)
+    plt.suptitle("Convergence curve by generation")
     plt.show()
 
     #For 2D
-    if (dimensions==2):
+    if (dimensions==2) and (f_problem != 5) :
         #Plot last swarm and best particle in contour plot
         f1= functions(f=f_problem,dim=dimensions)
         x = np.arange(f1.bounds[0][0], f1.bounds[1][1], 1)
         y = np.arange(f1.bounds[0][0], f1.bounds[1][1], 1)
         z= f1.contour
-        #z=np.transpose(z)
-        #h = plt.contourf(x[0:199],y[0:199],z[0:199,0:199])
         h = plt.contourf(x,y,z)
         plt.plot(pop.get_x()[:,0],pop.get_x()[:,1], 'b+')
         plt.plot(pop.get_x()[pop.best_idx()][0],pop.get_x()[pop.best_idx()][1], 'r+') 
         plt.show()
+
 
 
 if __name__ == '__main__':
