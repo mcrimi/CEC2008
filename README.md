@@ -47,7 +47,7 @@ in an unconstrained particle velocity and a constant inertia weight equal to ω 
 Number of generations (parameter)
 
 ## Results
-In all cases the best fit approached the global minima.
+In all cases the best fit approached the global minima. Using D=2 as as an example to show contour plot.
 
 ```python
 
@@ -84,7 +84,9 @@ Optimization Running...
 	Thread safety: none
 ```
 
+
 **Convergence curve**
+
 ![Convergence](https://github.com/mcrimi/CEC2008/blob/master/PSO_convergence.png?raw=true)
 
 **Solution**
