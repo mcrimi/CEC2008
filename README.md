@@ -17,9 +17,9 @@ See CEC2008_TechnicalReport.pdf
 1) Install required libraries
 2) Execute **Baseline.py** in a Python 3.7 interpreter
 3) Provide the inputs: 
-    Problem to solve (1 to 6)
-    Number of dimensions (1 to 500) 
-    Maximum iterations
+   - Problem to solve (1 to 6)
+   - Number of dimensions (1 to 500) 
+   - Maximum iterations
 
 For any problem with dimension = 2, you'll get a contour plot with the last generation swarm in blue and the best particle in red. For this to work the F_contour_soultion.txt files should be in the same folder as baseline.py,
 
