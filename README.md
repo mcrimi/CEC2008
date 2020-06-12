@@ -24,7 +24,10 @@ See CEC2008_TechnicalReport.pdf
 For any problem with dimension = 2, you'll get a contour plot with the last generation swarm in blue and the best particle in red. For this to work the F_contour_soultion.txt files should be in the same folder as baseline.py,
 
 ## Algorithm
-PSO is an evolutionary algorithm where each individual within the population, known as particle in PSO terminology, adjusts its flying trajectory in the multi-dimensional search space according to its own previous flying experience together with those of the neighbouring particles in the swarm.
+
+Rationale: Given that we're dealing with continuous search spaces, it seemd like PSO would be the best algorithm to go for as it seemed to perfrom better than simmulated annealing.
+
+PSO is an evolutionary algorithm where each individual within the population, known as particle in PSO terminology, adjusts its flying trajectory in the multi-dimensional search space according to its own previous flying experience together with those of the neighbouring particles in the swarm. There are variations in terms the velocities and intitializations which define the variant but also different neighbour topologies to 
 
 ## Hyper-parameters
 
@@ -32,7 +35,7 @@ For the parametrization of the algorithm I've followed the recommendations of th
 
 I've used the *Canonical PSO with inertia weight* variant mainly because that's the one I've seen in class, but it would be very intersting to explore the fully informed methodology.
 
-In terms of topology of the swarm I've chosen and adaptive random topology, where each particle randomly informs K particles and itself  with K usually set to 3. In this topology the connections between particles randomly change when the global optimum shows no improvement.
+In terms of topology of the swarm I've chosen and adaptive random topology, in which each particle randomly informs K particles and itself, with K set to 3. In this topology the connections between particles randomly change when the global optimum shows no improvement.
 
 Following the proceedings of : M. Zambrano-Bigiarini, M. Clerc and R. Rojas, "Standard Particle Swarm Optimisation 2011 at CEC-2013: A baseline for future PSO improvements," doi: 10.1109/CEC.2013.6557848 I've defined a swarm of 40 particles with random initialisation of particle positions and velocities
 
@@ -41,4 +44,51 @@ in an unconstrained particle velocity and a constant inertia weight equal to ω 
 
 
 ## Stopping criterion
-Number of generations
+Number of generations (parameter)
+
+## Results
+In all cases the best fit approached the global minima.
+
+```python
+
+----------------------------------------------
+
+Function:  Shifted Rosenbrock’s Function
+
+Dimensions:  2
+
+Generations:  50
+
+----------------------------------------------
+
+Optimization Running...
+
+{} Problem name: <class '__main__.functions'>
+	Global dimension:			2
+	Integer dimension:			0
+	Fitness dimension:			1
+	Number of objectives:			1
+	Equality constraints dimension:		0
+	Inequality constraints dimension:	0
+	Lower bounds: [-100, -100]
+	Upper bounds: [100, 100]
+	Has batch fitness evaluation: false
+
+	Has gradient: false
+	User implemented gradient sparsity: false
+	Has hessians: false
+	User implemented hessians sparsity: false
+
+	Fitness evaluations: 0
+
+	Thread safety: none
+```
+
+**Convergence curve**
+![Convergence](https://github.com/mcrimi/CEC2008/blob/master/PSO_convergence.png?raw=true)
+
+**Solution**
+
+
+![Contour Plot](https://github.com/mcrimi/CEC2008/blob/master/Swarm.png?raw=true)
+
