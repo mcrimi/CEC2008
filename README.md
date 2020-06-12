@@ -16,7 +16,7 @@ See CEC2008_TechnicalReport.pdf
 ## Run the script
 1) Install required libraries
 2) Execute **Baseline.py** in a Python 3.7 interpreter
-3) Provide the inputs: 
+3) Provide the inputs via command line:
    - Problem to solve (1 to 6)
    - Number of dimensions (1 to 500) 
    - Maximum iterations
